@@ -1,0 +1,29 @@
+import { Controller, Get, Post, Body, Patch, Param, Delete,ParseIntPipe } from '@nestjs/common';
+import { BookreviewsService } from './bookreviews.service';
+import { CreateBookreviewDto } from './dto/create-bookreview.dto';
+import { UpdateBookreviewDto } from './dto/update-bookreview.dto';
+
+@Controller('bookreviews')
+export class BookreviewsController {
+  constructor(private readonly bookreviewsService: BookreviewsService) {}
+
+  @Post()
+  create(@Body() createBookreviewDto: CreateBookreviewDto) {
+    return this.bookreviewsService.create(createBookreviewDto);
+  }
+
+  @Get(':id')
+  findOne(@Param('id',ParseIntPipe) id: number) {
+    return this.bookreviewsService.findOne(id);
+  }
+
+  @Patch(':id')
+  update(@Param('id',ParseIntPipe) id: number, @Body() updateBookreviewDto: UpdateBookreviewDto) {
+    return this.bookreviewsService.update(id, updateBookreviewDto);
+  }
+
+  @Delete(':id')
+  remove(@Param('id',ParseIntPipe) id: number) {
+    return this.bookreviewsService.remove(id);
+  }
+}
