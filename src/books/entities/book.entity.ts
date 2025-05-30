@@ -6,11 +6,11 @@ import { Column, Entity,ManyToOne,PrimaryGeneratedColumn,Relation,OneToMany,Many
 
 @Entity()
 export class Book {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id:number;
-    @Column()
+    @Column({ length: 200 })
     title:string;
-    @Column()
+    @Column({ type: 'text',length: 2000 })
     description:string;
     @Column('date')
     publicationYear:string;

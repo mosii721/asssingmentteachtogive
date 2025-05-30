@@ -1,4 +1,4 @@
-import {IsNumber,IsString,IsOptional,Min,Max} from 'class-validator';
+import {IsNumber,IsString,IsOptional,Min,Max,MinLength,MaxLength} from 'class-validator';
 
 export class CreateBookreviewDto {
     @IsNumber()
@@ -8,6 +8,8 @@ export class CreateBookreviewDto {
     book_id:number;
 
     @IsString()
+    @MinLength(10, { message: 'Content must be at least 10 characters long' })
+    @MaxLength(1000, { message: 'Content must be at most 1000 characters long' })
     content:string;
 
     @IsNumber()

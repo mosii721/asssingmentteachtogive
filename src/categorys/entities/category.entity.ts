@@ -3,11 +3,11 @@ import { Column, Entity,PrimaryGeneratedColumn,Relation,ManyToMany } from "typeo
 
 @Entity()
 export class Category {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id:number;
-    @Column()
+    @Column({ length: 50 })
     name:string;
-    @Column()
+    @Column({ type: 'text',length: 50, nullable: true })
     description:string;
 
     @ManyToMany(() => Book, (book) => book.categories)

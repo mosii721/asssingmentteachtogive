@@ -6,13 +6,13 @@ export class Profile {
     @PrimaryGeneratedColumn('uuid')
     id:number;
 
-    @Column()
+    @Column({type: 'text', nullable: true })
     bio:string;
-    @Column()
+    @Column({nullable: true })
     avatar:string;
-    @Column('date')
+    @Column('date',{ nullable: true })
     dateOfBirth:string;
-    @Column()
+    @Column({ nullable: true })
     location:string;
 
     @OneToOne(() => User, (user)  =>  user.profile)
