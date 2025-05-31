@@ -1,10 +1,15 @@
 import { Book } from "src/books/entities/book.entity";
-import { Status } from "src/users/entities/user.entity";
-import { Column, Entity,PrimaryGeneratedColumn,OneToMany,Validate } from "typeorm";
+import { Column, Entity,PrimaryGeneratedColumn,OneToMany} from "typeorm";
+
+export  enum Status{
+    TRUE='true',
+    FALSE='false',
+
+}
 
 @Entity()
 export class Author {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn()
     id:number;
     @Column({ length: 100 })
     name:string;

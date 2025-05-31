@@ -12,6 +12,11 @@ export class ProfilesController {
     return this.profilesService.create(createProfileDto);
   }
 
+  @Get()
+    findAll() {
+      return this.profilesService.findAll();
+    }
+
   @Get(':id')
   findOne(@Param('id',ParseIntPipe) id:number) {
     return this.profilesService.findOne(id);

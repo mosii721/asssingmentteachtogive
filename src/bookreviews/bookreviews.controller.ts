@@ -12,6 +12,11 @@ export class BookreviewsController {
     return this.bookreviewsService.create(createBookreviewDto);
   }
 
+  @Get()
+    findAll() {
+      return this.bookreviewsService.findAll();
+    }
+
   @Get(':id')
   findOne(@Param('id',ParseIntPipe) id: number) {
     return this.bookreviewsService.findOne(id);

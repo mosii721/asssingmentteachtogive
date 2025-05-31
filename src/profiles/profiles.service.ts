@@ -14,8 +14,15 @@ export class ProfilesService {
     return  await this.profileRepository.save(createProfileDto)
   }
 
+  async findAll() {
+    return await this.profileRepository.find({relations:['user']});
+  }
+
   async findOne(id: number) {
-    return await this.profileRepository.findOneBy({id})
+    return await  this.profileRepository.find({
+      where:{id},
+        relations:['user']
+    });
   }
 
   async update(id: number, updateProfileDto: UpdateProfileDto) {

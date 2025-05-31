@@ -5,10 +5,10 @@ import { Column, Entity, PrimaryGeneratedColumn,Check,ManyToOne,Relation } from 
 @Entity()
 export class Bookreview {
     
-    @PrimaryGeneratedColumn('uuid')
-    id:number
+    @PrimaryGeneratedColumn()
+    id:number;
 
-    @Column({ type: 'text',length: 1000 })
+    @Column({length: 1000 })
     content:string;
 
     @Column({ type: 'int', nullable: true })

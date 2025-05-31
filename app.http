@@ -1,2 +1,182 @@
 @url = http://localhost:8000
 
+
+
+POST {{url}}/seed
+###
+GET {{url}}/profiles
+
+###
+
+POST {{ url}}/profiles
+Content-Type: application/json
+
+{
+  "bio": "Book writer",
+  "dateOfBirth":"2005-05-03",
+  "isActive":"true"
+}
+
+###
+GET {{url}}/profiles/1
+
+###
+PATCH {{url}}/profiles/1
+Content-Type: application/json
+
+{
+ "bio": "Book writer"
+}
+
+###
+DELETE {{url}}/profiles/1
+
+###
+GET {{url}}/users
+
+###
+
+POST {{ url}}/users
+Content-Type: application/json
+
+{
+  "name": "Mike",
+  "email":"Mike@gmail.com",
+  "password":"0733031821",
+  "isActive":"true"
+}
+
+###
+GET {{url}}/users/1
+
+###
+PATCH {{url}}/users/1
+Content-Type: application/json
+
+{
+  "phone_number":"1786354"
+}
+
+###
+DELETE {{url}}/users/1
+
+###
+GET {{url}}/authors
+
+###
+
+POST {{ url}}/authors
+Content-Type: application/json
+
+{
+  "name": "Mike",
+  "bio":"Mike@gmail.com",
+  "dateOfBirth":"2004-05-03",
+  "isActive":"true"
+}
+
+###
+GET {{url}}/authors/1
+
+###
+PATCH {{url}}/authors/1
+Content-Type: application/json
+
+{
+  "dateOfBirth":"2006-05-03"
+}
+
+###
+DELETE {{url}}/authors/1
+
+
+###
+GET {{url}}/books
+
+###
+
+POST {{ url}}/books
+Content-Type: application/json
+
+{
+  "title": "Mike",
+  "description":"Mike@gmail.com",
+  "publicationYear":"2014-05-03",
+  "isAvailable":"true"
+}
+
+###
+GET {{url}}/books/1
+
+###
+PATCH {{url}}/books/1
+Content-Type: application/json
+
+{
+  "publicationYear":"2024-05-03"
+}
+
+###
+DELETE {{url}}/books/1
+
+
+###
+GET {{url}}/categorys
+
+###
+
+POST {{ url}}/categorys
+Content-Type: application/json
+
+{
+  "name": "Mike",
+  "description":"Mike@gmail.com"
+}
+
+###
+GET {{url}}/categorys/1
+
+###
+PATCH {{url}}/categorys/1
+Content-Type: application/json
+
+{
+  "name": "Mike"
+}
+
+###
+DELETE {{url}}/categorys/1
+
+###
+GET {{url}}/bookreviews
+
+###
+
+POST {{ url}}/bookreviews
+Content-Type: application/json
+
+{
+  "content": "Mike",
+  "rating":3
+}
+
+###
+GET {{url}}/bookreviews/1
+
+###
+PATCH {{url}}/bookreviews/1
+Content-Type: application/json
+
+{
+  "rating":2
+}
+
+###
+DELETE {{url}}/bookreviews/1
+
+###
+GET {{url}}/authors/3/books
+
+###
+GET {{url}}/categorys/2/books
+

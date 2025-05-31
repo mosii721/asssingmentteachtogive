@@ -30,16 +30,16 @@ export class BooksService {
     if (title) {
       return await this.bookRepository.find({
         where:{title},
-        relations:['authors','bookreview']
+        relations:['authors','bookreview','categories']
       }) ;
     }
-    return await this.bookRepository.find({relations:['authors','bookreview']});
+    return await this.bookRepository.find({relations:['authors','bookreview','categories']});
   }
 
   async findOne(id: number) {
     return await  this.bookRepository.find({
       where:{id},
-        relations:['authors','bookreview']
+        relations:['authors','bookreview','categories']
     });
   }
 
@@ -50,4 +50,6 @@ export class BooksService {
   async remove(id: number) {
     return await  this.bookRepository.delete(id);
   }
+
+  
 }

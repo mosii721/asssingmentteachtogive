@@ -17,6 +17,11 @@ export class AuthorsController {
     return this.authorsService.findAll(name);
   }
 
+  @Get(':id/books')
+  findBooksByAuthor(@Param('id', ParseIntPipe) id: number) {
+  return this.authorsService.findBooksByAuthor(id);
+}
+
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id:number) {
     return this.authorsService.findOne(id);

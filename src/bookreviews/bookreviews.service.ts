@@ -30,6 +30,10 @@ export class BookreviewsService {
     return  await this.bookreviewRepository.save(newBookreview)
   }
 
+  async findAll() {
+    return await this.bookreviewRepository.find({relations:['users','books']});
+  }
+
 
   async findOne(id: number) {
     return await  this.bookreviewRepository.find({

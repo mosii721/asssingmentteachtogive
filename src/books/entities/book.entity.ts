@@ -1,16 +1,21 @@
 import { Author } from "src/authors/entities/author.entity";
 import { Bookreview } from "src/bookreviews/entities/bookreview.entity";
 import { Category } from "src/categorys/entities/category.entity";
-import { Status } from "src/users/entities/user.entity";
 import { Column, Entity,ManyToOne,PrimaryGeneratedColumn,Relation,OneToMany,ManyToMany,JoinTable } from "typeorm";
+
+export  enum Status{
+    TRUE='true',
+    FALSE='false',
+
+}
 
 @Entity()
 export class Book {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn()
     id:number;
     @Column({ length: 200 })
     title:string;
-    @Column({ type: 'text',length: 2000 })
+    @Column({ length: 2000 })
     description:string;
     @Column('date')
     publicationYear:string;

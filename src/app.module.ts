@@ -8,6 +8,7 @@ import { AuthorsModule } from './authors/authors.module';
 import { BooksModule } from './books/books.module';
 import { CategorysModule } from './categorys/categorys.module';
 import { BookreviewsModule } from './bookreviews/bookreviews.module';
+import { SeedModule } from './seed/seed.module';
 
 
 @Module({
@@ -22,13 +23,14 @@ import { BookreviewsModule } from './bookreviews/bookreviews.module';
     AuthorsModule,
     BooksModule,
     CategorysModule,
-    BookreviewsModule
+    BookreviewsModule,
+    SeedModule
   ],
   controllers: [],
   providers: [],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-      consumer.apply(LoggerMiddleware).forRoutes();
+      consumer.apply(LoggerMiddleware).forRoutes('authors','bookreviews','books','categorys','profiles','users');
   }
 }

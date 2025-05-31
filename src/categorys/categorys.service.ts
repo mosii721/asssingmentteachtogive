@@ -1,34 +1,52 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable,NotFoundException } from '@nestjs/common';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Category } from './entities/category.entity';
-import { Book } from 'src/books/entities/book.entity';
+
 
 @Injectable()
 export class CategorysService {
   constructor(
-    @InjectRepository(Category) private categoryRepository: Repository<Category>,
-    @InjectRepository(Book) private bookRepository: Repository<Book>) {}
+    @InjectRepository(Category) private categoryRepository: Repository<Category>,) {}
 
-  create(createCategoryDto: CreateCategoryDto) {
-    return 'This action adds a new category';
+  async create(createCategoryDto: CreateCategoryDto) {
+    return  await this.categoryRepository.save(createCategoryDto)
   }
 
-  findAll() {
-    return `This action returns all categorys`;
+  async findAll(name?:string) {
+    if (name) {
+      return await this.categoryRepository.find({
+        where:{name},
+        relations:['books']
+      }) ;
+    }
+    return await this.categoryRepository.find({relations:['books']});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} category`;
+  async findOne(id: number) {
+    return await  this.categoryRepository.find({
+      where:{id},
+        relations:['books']
+    });
   }
 
-  update(id: number, updateCategoryDto: UpdateCategoryDto) {
-    return `This action updates a #${id} category`;
+  async update(id: number, updateCategoryDto: UpdateCategoryDto) {
+    return await this.categoryRepository.update(id,updateCategoryDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} category`;
+  async remove(id: number) {
+    return await  this.categoryRepository.delete(id);
   }
+
+  async findBooksByCategory(categoryId: number) {
+    const category = await this.categoryRepository.findOne({
+      where: { id: categoryId },
+      relations: ['books'],
+    });
+    if (!category) throw new NotFoundException('Category not found');
+    return category.books;
+  }
+  
 }

@@ -3,7 +3,7 @@ import { Column, Entity,OneToOne,PrimaryGeneratedColumn, Relation } from "typeor
 
 @Entity()
 export class Profile {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn()
     id:number;
 
     @Column({type: 'text', nullable: true })

@@ -10,7 +10,7 @@ export  enum Status{
 
 @Entity()
 export class User {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn()
     id:number;
     @Column({ length: 50 })
     name:string;
